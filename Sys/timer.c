@@ -27,13 +27,13 @@ u8 i;
 /********************* Timer0中断函数************************/
 void timer0_int (void) interrupt TIMER0_VECTOR
 {
-   P30 = ~P30;
+//    P30 = ~P30;
 }
 
 /********************* Timer1中断函数************************/
 void timer1_int (void) interrupt TIMER1_VECTOR
 {
-   P31 = ~P31;
+//    P31 = ~P31;
 
 }
 

@@ -52,7 +52,7 @@ void	UART_config(void)
 	COMx_InitStructure.UART_P_SW      = UART1_SW_P30_P31;	//切换端口,   UART1_SW_P30_P31,UART1_SW_P36_P37,UART1_SW_P16_P17(必须使用内部时钟)
 	USART_Configuration(USART1, &COMx_InitStructure);		//初始化串口3 USART1,USART2
 
-	PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");	//USART1发送一个字符串
+	// PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");	//USART1发送一个字符串
 
 }
 
@@ -124,13 +124,15 @@ void main(void)
 {
 
 	u8 i;
-
-	GPIO_config();
-	UART_config();
 	Timer_config();
+	GPIO_config();
 	SPI_config();
+	UART_config();
 
 	EA = 1;
+
+	delay_ms(200);
+	PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");	//USART1发送一个字符串
 
 	while(1)
 	{
@@ -170,12 +172,13 @@ void main(void)
 					i = 0;
 					if(SPI_TxRxMode == SPI_Mode_Master)	i++;
 					else					SPI_RxCnt--;
-					for(; i<SPI_RxCnt; i++)	TX_write2buff(USART1,SPI_RxBuffer[i]);
+					for(; i<SPI_RxCnt; i++)	PrintString(USART1,*SPI_RxBuffer + i);
 				}
 				SPI_RxCnt = 0;	//B_SPI_RxOk = 0;
 			}
 		}
-		////////////////////////////
+		////////////////////////////////////
+
 	}
 }
 

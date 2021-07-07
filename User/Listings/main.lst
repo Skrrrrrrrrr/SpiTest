@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   MAIN                                                                  07/07/2021 16:40:51 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  07/07/2021 17:52:02 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
@@ -62,13 +62,13 @@ line level    source
   49   1              COMx_InitStructure.UART_BaudRate  = 9600ul;                     //波特率, 一般 110 ~ 115200
   50   1              COMx_InitStructure.UART_RxEnable  = ENABLE;                             //接收允许,   ENABLE或DISABLE
   51   1              COMx_InitStructure.UART_Interrupt = ENABLE;                             //中断允许,   ENABLE或DISABLE
-C51 COMPILER V9.54   MAIN                                                                  07/07/2021 16:40:51 PAGE 2   
+C51 COMPILER V9.54   MAIN                                                                  07/07/2021 17:52:02 PAGE 2   
 
   52   1              COMx_InitStructure.UART_P_SW      = UART1_SW_P30_P31;   //切换端口,   UART1_SW_P30_P31,UART1_SW_P36_P37,UAR
              -T1_SW_P16_P17(必须使用内部时钟)
   53   1              USART_Configuration(USART1, &COMx_InitStructure);               //初始化串口3 USART1,USART2
   54   1      
-  55   1              PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");      //USART1发送一个字符串
+  55   1              // PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");   //USART1发送一个字符串
   56   1      
   57   1      }
   58          
@@ -126,7 +126,7 @@ line level    source
  101   1              Timer_Inilize(Timer4,&TIM_InitStructure);                               //初始化Timer4    Timer0,Timer1,Timer2,Timer3,Timer4
  102   1              
  103   1      }
-C51 COMPILER V9.54   MAIN                                                                  07/07/2021 16:40:51 PAGE 3   
+C51 COMPILER V9.54   MAIN                                                                  07/07/2021 17:52:02 PAGE 3   
 
  104          
  105          void    SPI_config(void)
@@ -153,77 +153,69 @@ line level    source
  124          {
  125   1      
  126   1              u8 i;
- 127   1      
+ 127   1              Timer_config();
  128   1              GPIO_config();
- 129   1              UART_config();
- 130   1              Timer_config();
- 131   1              SPI_config();
- 132   1      
- 133   1              EA = 1;
- 134   1      
- 135   1              while(1)
- 136   1              {
- 137   2      
- 138   2                      // mcp_data=255?mcp_data=0:mcp_data++;
- 139   2                      SPI_TxRead = 0;
- 140   2                      SPI_TxWrite = 0;
- 141   2                      SPI_RxCnt = 0;
- 142   2                      SPI_WriteToTxBuf(0x1f);
- 143   2                      SPI_WriteToTxBuf((u8)0x00);
- 144   2                      SPI_WriteToTxBuf((u8)0x00);
- 145   2                      // SPI_WriteToTxBuf((u8)0x00);
- 146   2                      // SPI_WriteToTxBuf((u8)0x00);
- 147   2                      SPI_TrigTx();
- 148   2                      delay_ms(250);
- 149   2                      
- 150   2                      // SPI_WriteToTxBuf(0x12);
- 151   2                      // SPI_WriteToTxBuf((u8)0x00);
- 152   2                      // SPI_WriteToTxBuf((u8)0x00);
- 153   2                      // SPI_TrigTx();
- 154   2                      // delay_ms(250);
- 155   2      
- 156   2                      //////////////////////////////
- 157   2                      if((COM1.TX_read != COM1.RX_write) && (COM1.TX_Busy == 0))      //收到过数据, 并且发送空闲
- 158   2                      {
- 159   3                              COM1.TX_Busy = 1;               //标志发送忙
- 160   3                              SBUF = COM1.RX_Buffer[COM1.TX_read];    //发一个字节
- 161   3                              if(++COM1.TX_read >= RX_Length) COM1.TX_read = 0;       //避免溢出处理
- 162   3                      }
- 163   2                      ////////////////////////////////
-C51 COMPILER V9.54   MAIN                                                                  07/07/2021 16:40:51 PAGE 4   
+ 129   1              SPI_config();
+ 130   1              UART_config();
+ 131   1      
+ 132   1              EA = 1;
+ 133   1      
+ 134   1              delay_ms(200);
+ 135   1              PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");      //USART1发送一个字符串
+ 136   1      
+ 137   1              while(1)
+ 138   1              {
+ 139   2      
+ 140   2                      // mcp_data=255?mcp_data=0:mcp_data++;
+ 141   2                      SPI_TxRead = 0;
+ 142   2                      SPI_TxWrite = 0;
+ 143   2                      SPI_RxCnt = 0;
+ 144   2                      SPI_WriteToTxBuf(0x1f);
+ 145   2                      SPI_WriteToTxBuf((u8)0x00);
+ 146   2                      SPI_WriteToTxBuf((u8)0x00);
+ 147   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 148   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 149   2                      SPI_TrigTx();
+ 150   2                      delay_ms(250);
+ 151   2                      
+ 152   2                      // SPI_WriteToTxBuf(0x12);
+ 153   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 154   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 155   2                      // SPI_TrigTx();
+ 156   2                      // delay_ms(250);
+ 157   2      
+ 158   2                      //////////////////////////////
+ 159   2                      if((COM1.TX_read != COM1.RX_write) && (COM1.TX_Busy == 0))      //收到过数据, 并且发送空闲
+ 160   2                      {
+ 161   3                              COM1.TX_Busy = 1;               //标志发送忙
+ 162   3                              SBUF = COM1.RX_Buffer[COM1.TX_read];    //发一个字节
+ 163   3                              if(++COM1.TX_read >= RX_Length) COM1.TX_read = 0;       //避免溢出处理
+C51 COMPILER V9.54   MAIN                                                                  07/07/2021 17:52:02 PAGE 4   
 
- 164   2                      if(SPI_RxTimerOut > 0)
- 165   2                      {
- 166   3                              if(--SPI_RxTimerOut == 0)
- 167   3                              {
- 168   4                                      if(SPI_RxCnt > 1)
- 169   4                                      {
- 170   5                                              i = 0;
- 171   5                                              if(SPI_TxRxMode == SPI_Mode_Master)     i++;
- 172   5                                              else                                    SPI_RxCnt--;
- 173   5                                              for(; i<SPI_RxCnt; i++) TX_write2buff(USART1,SPI_RxBuffer[i]);
- 174   5                                      }
- 175   4                                      SPI_RxCnt = 0;  //B_SPI_RxOk = 0;
- 176   4                              }
- 177   3                      }
- 178   2                      ////////////////////////////
- 179   2              }
- 180   1      }
- 181          
- 182          
- 183          
+ 164   3                      }
+ 165   2                      ////////////////////////////////
+ 166   2                      if(SPI_RxTimerOut > 0)
+ 167   2                      {
+ 168   3                              if(--SPI_RxTimerOut == 0)
+ 169   3                              {
+ 170   4                                      if(SPI_RxCnt > 1)
+ 171   4                                      {
+ 172   5                                              i = 0;
+ 173   5                                              if(SPI_TxRxMode == SPI_Mode_Master)     i++;
+ 174   5                                              else                                    SPI_RxCnt--;
+ 175   5                                              for(; i<SPI_RxCnt; i++) PrintString(USART1,*SPI_RxBuffer + i);
+*** ERROR C214 IN LINE 175 OF main.c: illegal pointer conversion
+ 176   5                                      }
+ 177   4                                      SPI_RxCnt = 0;  //B_SPI_RxOk = 0;
+ 178   4                              }
+ 179   3                      }
+ 180   2                      ////////////////////////////////////
+ 181   2      
+ 182   2              }
+ 183   1      }
  184          
+ 185          
+ 186          
+ 187          
 
-
-MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    347    ----
-   CONSTANT SIZE    =     34    ----
-   XDATA SIZE       =   ----    ----
-   PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----      29
-   IDATA SIZE       =   ----    ----
-   BIT SIZE         =   ----    ----
-END OF MODULE INFORMATION.
-
-
-C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)

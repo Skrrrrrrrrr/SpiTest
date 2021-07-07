@@ -18,7 +18,6 @@
 #include	"config.h"
 
 #define	RX_Length	128
-#define	TX_Length	128
 
 #define	USART1	1
 #define	USART2	2
@@ -74,9 +73,6 @@ extern	u8 	xdata RX3_Buffer[RX_Length];	//接收缓冲
 extern	u8 	xdata RX4_Buffer[RX_Length];	//接收缓冲
 
 u8	USART_Configuration(u8 UARTx, COMx_InitDefine *COMx);
-
-void TX_write2buff(u8 UARTx,u8 dat);	//写入发送缓冲，指针+1
-
 void PrintString(u8 UARTx, u8 *puts);
 
 #endif
