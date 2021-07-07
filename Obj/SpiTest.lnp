@@ -1,0 +1,9 @@
+"..\Obj\main.obj",
+"..\Obj\GPIO.obj",
+"..\Obj\SPI.obj",
+"..\Obj\USART.obj",
+"..\Obj\MCP3302.obj",
+"..\Obj\delay.obj",
+"..\Obj\timer.obj" 
+TO "..\Obj\SpiTest" 
+PRINT(".\Listings\SpiTest.m51") RAMSIZE(256) 

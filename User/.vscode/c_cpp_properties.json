@@ -1,0 +1,75 @@
+{
+    "configurations": [
+        {
+            "name": "SpiUARTTest",
+            "includePath": [
+                "e:\\Workspace\\keilProject\\testProForProteus\\SpiTest\\Hardware",
+                "e:\\Workspace\\keilProject\\testProForProteus\\SpiTest\\Sys",
+                "e:\\Workspace\\keilProject\\testProForProteus\\SpiTest\\Peripheral",
+                "D:\\Program Files\\Keil\\Keil_v5\\C51\\INC",
+                "e:\\Workspace\\keilProject\\testProForProteus\\SpiTest\\User"
+            ],
+            "defines": [
+                "__C51__",
+                "__VSCODE_C51__",
+                "reentrant=",
+                "compact=",
+                "small=",
+                "large=",
+                "data=",
+                "idata=",
+                "pdata=",
+                "bdata=",
+                "xdata=",
+                "code=",
+                "bit=char",
+                "sbit=char",
+                "sfr=char",
+                "sfr16=int",
+                "sfr32=int",
+                "interrupt=",
+                "using=",
+                "_at_=",
+                "_priority_=",
+                "_task_="
+            ],
+            "intelliSenseMode": "${default}"
+        },
+        {
+            "name": "SpiTest",
+            "includePath": [
+                "e:\\Workspace\\keilProject\\testProForProteus\\SpiTest\\Hardware",
+                "e:\\Workspace\\keilProject\\testProForProteus\\SpiTest\\Peripheral",
+                "e:\\Workspace\\keilProject\\testProForProteus\\SpiTest\\Sys",
+                "e:\\Workspace\\keilProject\\testProForProteus\\SpiTest\\User",
+                "D:\\Program Files\\Keil\\Keil_v5\\C51\\INC"
+            ],
+            "defines": [
+                "__C51__",
+                "__VSCODE_C51__",
+                "reentrant=",
+                "compact=",
+                "small=",
+                "large=",
+                "data=",
+                "idata=",
+                "pdata=",
+                "bdata=",
+                "xdata=",
+                "code=",
+                "bit=char",
+                "sbit=char",
+                "sfr=char",
+                "sfr16=int",
+                "sfr32=int",
+                "interrupt=",
+                "using=",
+                "_at_=",
+                "_priority_=",
+                "_task_="
+            ],
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "mcp3302.h": "c",
+        "USART.C": "cpp",
+        "spi.h": "c",
+        "config.h": "c"
+    }
+}
