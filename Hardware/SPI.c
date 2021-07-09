@@ -11,8 +11,8 @@
 /* article, please specify in which data and procedures from STC    */
 /*------------------------------------------------------------------*/
 
-
 #include	"SPI.h"
+#include	"USART.h"
 
 u8	SPI_TxRxMode;	//
 u8 	SPI_TxWrite;

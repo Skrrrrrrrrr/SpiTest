@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   SPI                                                                   07/07/2021 17:52:02 PAGE 1   
+C51 COMPILER V9.54   SPI                                                                   07/09/2021 16:38:48 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE SPI
@@ -21,8 +21,8 @@ line level    source
   11          /* article, please specify in which data and procedures from STC    */
   12          /*------------------------------------------------------------------*/
   13          
-  14          
-  15          #include        "SPI.h"
+  14          #include        "SPI.h"
+  15          #include        "USART.h"
   16          
   17          u8      SPI_TxRxMode;   //
   18          u8      SPI_TxWrite;
@@ -62,7 +62,7 @@ line level    source
   52   1      }
   53          
   54          //========================================================================
-C51 COMPILER V9.54   SPI                                                                   07/07/2021 17:52:02 PAGE 2   
+C51 COMPILER V9.54   SPI                                                                   07/09/2021 16:38:48 PAGE 2   
 
   55          // 函数: void   SPI_SetMode(u8 mode)
   56          // 描述: SPI设置主从模式函数.
@@ -126,32 +126,33 @@ line level    source
  114   3                              if(SPI_RxCnt >= SPI_BUF_LENTH)          SPI_RxCnt = 0;
  115   3                              SPI_RxBuffer[SPI_RxCnt++] = SPDAT;
  116   3                              SPI_RxTimerOut = 5;
-C51 COMPILER V9.54   SPI                                                                   07/07/2021 17:52:02 PAGE 3   
+C51 COMPILER V9.54   SPI                                                                   07/09/2021 16:38:48 PAGE 3   
 
- 117   3                      }
- 118   2              }
- 119   1      
- 120   1              if(SPI_TxRxMode == SPI_Mode_Master)
- 121   1              {
- 122   2                      if(SPI_TxRead != SPI_TxWrite)
- 123   2                      {
- 124   3                              SPDAT = SPI_TxBuffer[SPI_TxRead];
- 125   3                              if(++SPI_TxRead >= SPI_BUF_LENTH)               SPI_TxRead = 0;
- 126   3                      }
- 127   2                      else
- 128   2                      {
- 129   3                              SPI_TxRxMode = SPI_Mode_Slave;
- 130   3                              SPCTL &= ~(1<<4);       //slave
- 131   3                              SPI_SS = 1;
- 132   3                      }
- 133   2              }
- 134   1              SPSTAT = SPIF + WCOL;   //清0 SPIF和WCOL标志
- 135   1      }
- 136          
+ 117   3                              P7=SPI_RxBuffer[0];
+ 118   3                      }
+ 119   2              }
+ 120   1      
+ 121   1              if(SPI_TxRxMode == SPI_Mode_Master)
+ 122   1              {
+ 123   2                      if(SPI_TxRead != SPI_TxWrite)
+ 124   2                      {
+ 125   3                              SPDAT = SPI_TxBuffer[SPI_TxRead];
+ 126   3                              if(++SPI_TxRead >= SPI_BUF_LENTH)               SPI_TxRead = 0;
+ 127   3                      }
+ 128   2                      else
+ 129   2                      {
+ 130   3                              SPI_TxRxMode = SPI_Mode_Slave;
+ 131   3                              SPCTL &= ~(1<<4);       //slave
+ 132   3                              SPI_SS = 1;
+ 133   3                      }
+ 134   2              }
+ 135   1              SPSTAT = SPIF + WCOL;   //清0 SPIF和WCOL标志
+ 136   1      }
+ 137          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    305    ----
+   CODE SIZE        =    310    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

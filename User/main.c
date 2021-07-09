@@ -126,22 +126,20 @@ void main(void)
 	u8 i;
 	Timer_config();
 	GPIO_config();
-	SPI_config();
 	UART_config();
-
+	SPI_config();
+	P6=IE2;
 	EA = 1;
 
 	delay_ms(200);
-	PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");	//USART1发送一个字符串
 
 	while(1)
 	{
 
-		// mcp_data=255?mcp_data=0:mcp_data++;
 		SPI_TxRead = 0;
 		SPI_TxWrite = 0;
 		SPI_RxCnt = 0;
-		SPI_WriteToTxBuf(0x1f);
+		SPI_WriteToTxBuf(0x1c);
 		SPI_WriteToTxBuf((u8)0x00);
 		SPI_WriteToTxBuf((u8)0x00);
 		// SPI_WriteToTxBuf((u8)0x00);
@@ -154,29 +152,23 @@ void main(void)
 		// SPI_WriteToTxBuf((u8)0x00);
 		// SPI_TrigTx();
 		// delay_ms(250);
-
-		//////////////////////////////
-		if((COM1.TX_read != COM1.RX_write) && (COM1.TX_Busy == 0))	//收到过数据, 并且发送空闲
-		{
-			COM1.TX_Busy = 1;		//标志发送忙
-			SBUF = COM1.RX_Buffer[COM1.TX_read];	//发一个字节
-			if(++COM1.TX_read >= RX_Length)	COM1.TX_read = 0;	//避免溢出处理
-		}
+		////////////////////////////
+		PrintString(USART1,SPI_RxBuffer+i);
 		////////////////////////////////
-		if(SPI_RxTimerOut > 0)
-		{
-			if(--SPI_RxTimerOut == 0)
-			{
-				if(SPI_RxCnt > 1)
-				{
-					i = 0;
-					if(SPI_TxRxMode == SPI_Mode_Master)	i++;
-					else					SPI_RxCnt--;
-					for(; i<SPI_RxCnt; i++)	PrintString(USART1,*SPI_RxBuffer + i);
-				}
-				SPI_RxCnt = 0;	//B_SPI_RxOk = 0;
-			}
-		}
+		// if(SPI_RxTimerOut > 0)
+		// {
+		// 	if(--SPI_RxTimerOut == 0)
+		// 	{
+		// 		if(SPI_RxCnt > 1)
+		// 		{
+		// 			i = 0;
+		// 			if(SPI_TxRxMode == SPI_Mode_Master)	i++;
+		// 			else					SPI_RxCnt--;
+		// 			for(; i<SPI_RxCnt; i++)	PrintString(USART1,SPI_RxBuffer+i);
+		// 		}
+		// 		SPI_RxCnt = 0;	//B_SPI_RxOk = 0;
+		// 	}
+		// }
 		////////////////////////////////////
 
 	}
