@@ -79,7 +79,7 @@ void	Timer_config(void)
 	TIM_InitStructure.TIM_Run       = ENABLE;				//是否初始化后启动定时器, ENABLE或DISABLE
 	Timer_Inilize(Timer1,&TIM_InitStructure);				//初始化Timer1	  Timer0,Timer1,Timer2,Timer3,Timer4
 	*/
-	TIM_InitStructure.TIM_Interrupt = ENABLE;				//中断是否允许,   ENABLE或DISABLE. (注意: Timer2固定为16位自动重装, 中断固定为低优先级)
+	TIM_InitStructure.TIM_Interrupt = DISABLE;				//中断是否允许,   ENABLE或DISABLE. (注意: Timer2固定为16位自动重装, 中断固定为低优先级)
 	TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_12T;		//指定时钟源,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLOCK_Ext
 	TIM_InitStructure.TIM_ClkOut    = DISABLE;				//是否输出高速脉冲, ENABLE或DISABLE
 	TIM_InitStructure.TIM_Value     = 65536UL - (MAIN_Fosc / (1000*12));		//初值
@@ -88,8 +88,8 @@ void	Timer_config(void)
 	
 	TIM_InitStructure.TIM_Interrupt = ENABLE;				//中断是否允许,   ENABLE或DISABLE. (注意: Timer2固定为16位自动重装, 中断固定为低优先级)
 	TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_12T;		//指定时钟源,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLOCK_Ext
-	TIM_InitStructure.TIM_ClkOut    = DISABLE;				//是否输出高速脉冲, ENABLE或DISABLE
-	TIM_InitStructure.TIM_Value     = 65536UL - (MAIN_Fosc / (200*12));		//初值
+	TIM_InitStructure.TIM_ClkOut    = ENABLE;				//是否输出高速脉冲, ENABLE或DISABLE
+	TIM_InitStructure.TIM_Value     = 65536UL - (MAIN_Fosc / (100*12));		//初值
 	TIM_InitStructure.TIM_Run       = ENABLE;				//是否初始化后启动定时器, ENABLE或DISABLE
 	Timer_Inilize(Timer3,&TIM_InitStructure);				//初始化Timer3	  Timer0,Timer1,Timer2,Timer3,Timer4
 	
@@ -128,7 +128,7 @@ void main(void)
 	GPIO_config();
 	UART_config();
 	SPI_config();
-	P6=IE2;
+
 	EA = 1;
 
 	delay_ms(200);
@@ -136,39 +136,43 @@ void main(void)
 	while(1)
 	{
 
-		SPI_TxRead = 0;
-		SPI_TxWrite = 0;
-		SPI_RxCnt = 0;
-		SPI_WriteToTxBuf(0x1c);
-		SPI_WriteToTxBuf((u8)0x00);
-		SPI_WriteToTxBuf((u8)0x00);
-		// SPI_WriteToTxBuf((u8)0x00);
-		// SPI_WriteToTxBuf((u8)0x00);
-		SPI_TrigTx();
-		delay_ms(250);
+		// SPI_TxRead = 0;
+		// SPI_TxWrite = 0;
+		// SPI_RxCnt = 0;
 		
+		// SPI_WriteToTxBuf((u8)macpdata>>16);
+		// SPI_WriteToTxBuf((u8)macpdata>>8);
+		// SPI_WriteToTxBuf((u8)(macpdata));
+		// SPI_WriteToTxBuf((u8)0xa0);
+		// SPI_WriteToTxBuf((u8)0x00);
+		// SPI_WriteToTxBuf((u8)0x00);
+		// SPI_TrigTx();
+		// delay_ms(10);
+
 		// SPI_WriteToTxBuf(0x12);
 		// SPI_WriteToTxBuf((u8)0x00);
 		// SPI_WriteToTxBuf((u8)0x00);
 		// SPI_TrigTx();
 		// delay_ms(250);
 		////////////////////////////
-		PrintString(USART1,SPI_RxBuffer+i);
+
 		////////////////////////////////
-		// if(SPI_RxTimerOut > 0)
-		// {
-		// 	if(--SPI_RxTimerOut == 0)
-		// 	{
-		// 		if(SPI_RxCnt > 1)
-		// 		{
-		// 			i = 0;
-		// 			if(SPI_TxRxMode == SPI_Mode_Master)	i++;
-		// 			else					SPI_RxCnt--;
-		// 			for(; i<SPI_RxCnt; i++)	PrintString(USART1,SPI_RxBuffer+i);
-		// 		}
-		// 		SPI_RxCnt = 0;	//B_SPI_RxOk = 0;
-		// 	}
-		// }
+		if(SPI_RxTimerOut > 0)
+		{
+			if(--SPI_RxTimerOut == 0)
+			{
+							PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");	//USART1发送一个字符串
+
+				if(SPI_RxCnt > 1)
+				{
+					i = 0;
+					if(SPI_TxRxMode == SPI_Mode_Master)	i++;
+					else					SPI_RxCnt--;
+					for(; i<SPI_RxCnt; i++)	PrintString(USART1,&SPI_RxBuffer[i]);
+				}
+				SPI_RxCnt = 0;	//B_SPI_RxOk = 0;
+			}
+		}
 		////////////////////////////////////
 
 	}

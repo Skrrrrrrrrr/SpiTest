@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   MAIN                                                                  07/09/2021 16:38:48 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  07/13/2021 16:39:38 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   49   1              COMx_InitStructure.UART_BaudRate  = 9600ul;                     //²¨ÌØÂÊ, Ò»°ã 110 ~ 115200
   50   1              COMx_InitStructure.UART_RxEnable  = ENABLE;                             //½ÓÊÕÔÊÐí,   ENABLE»òDISABLE
   51   1              COMx_InitStructure.UART_Interrupt = ENABLE;                             //ÖÐ¶ÏÔÊÐí,   ENABLE»òDISABLE
-C51 COMPILER V9.54   MAIN                                                                  07/09/2021 16:38:48 PAGE 2   
+C51 COMPILER V9.54   MAIN                                                                  07/13/2021 16:39:38 PAGE 2   
 
   52   1              COMx_InitStructure.UART_P_SW      = UART1_SW_P30_P31;   //ÇÐ»»¶Ë¿Ú,   UART1_SW_P30_P31,UART1_SW_P36_P37,UAR
              -T1_SW_P16_P17(±ØÐëÊ¹ÓÃÄÚ²¿Ê±ÖÓ)
@@ -98,8 +98,8 @@ line level    source
   79   1              TIM_InitStructure.TIM_Run       = ENABLE;                               //ÊÇ·ñ³õÊ¼»¯ºóÆô¶¯¶¨Ê±Æ÷, ENABLE»òDISABLE
   80   1              Timer_Inilize(Timer1,&TIM_InitStructure);                               //³õÊ¼»¯Timer1    Timer0,Timer1,Timer2,Timer3,Timer4
   81   1              */
-  82   1              TIM_InitStructure.TIM_Interrupt = ENABLE;                               //ÖÐ¶ÏÊÇ·ñÔÊÐí,   ENABLE»òDISABLE. (×¢Òâ: Timer2¹Ì¶¨Îª16Î»×Ô
-             -¶¯ÖØ×°, ÖÐ¶Ï¹Ì¶¨ÎªµÍÓÅÏÈ¼¶)
+  82   1              TIM_InitStructure.TIM_Interrupt = DISABLE;                              //ÖÐ¶ÏÊÇ·ñÔÊÐí,   ENABLE»òDISABLE. (×¢Òâ: Timer2¹Ì¶¨Îª16Î»×
+             -Ô¶¯ÖØ×°, ÖÐ¶Ï¹Ì¶¨ÎªµÍÓÅÏÈ¼¶)
   83   1              TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_12T;                //Ö¸¶¨Ê±ÖÓÔ´,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLOCK_
              -Ext
   84   1              TIM_InitStructure.TIM_ClkOut    = DISABLE;                              //ÊÇ·ñÊä³ö¸ßËÙÂö³å, ENABLE»òDISABLE
@@ -111,8 +111,8 @@ line level    source
              -¶¯ÖØ×°, ÖÐ¶Ï¹Ì¶¨ÎªµÍÓÅÏÈ¼¶)
   90   1              TIM_InitStructure.TIM_ClkSource = TIM_CLOCK_12T;                //Ö¸¶¨Ê±ÖÓÔ´,     TIM_CLOCK_1T,TIM_CLOCK_12T,TIM_CLOCK_
              -Ext
-  91   1              TIM_InitStructure.TIM_ClkOut    = DISABLE;                              //ÊÇ·ñÊä³ö¸ßËÙÂö³å, ENABLE»òDISABLE
-  92   1              TIM_InitStructure.TIM_Value     = 65536UL - (MAIN_Fosc / (200*12));             //³õÖµ
+  91   1              TIM_InitStructure.TIM_ClkOut    = ENABLE;                               //ÊÇ·ñÊä³ö¸ßËÙÂö³å, ENABLE»òDISABLE
+  92   1              TIM_InitStructure.TIM_Value     = 65536UL - (MAIN_Fosc / (100*12));             //³õÖµ
   93   1              TIM_InitStructure.TIM_Run       = ENABLE;                               //ÊÇ·ñ³õÊ¼»¯ºóÆô¶¯¶¨Ê±Æ÷, ENABLE»òDISABLE
   94   1              Timer_Inilize(Timer3,&TIM_InitStructure);                               //³õÊ¼»¯Timer3    Timer0,Timer1,Timer2,Timer3,Timer4
   95   1              
@@ -126,7 +126,7 @@ line level    source
  101   1              Timer_Inilize(Timer4,&TIM_InitStructure);                               //³õÊ¼»¯Timer4    Timer0,Timer1,Timer2,Timer3,Timer4
  102   1              
  103   1      }
-C51 COMPILER V9.54   MAIN                                                                  07/09/2021 16:38:48 PAGE 3   
+C51 COMPILER V9.54   MAIN                                                                  07/13/2021 16:39:38 PAGE 3   
 
  104          
  105          void    SPI_config(void)
@@ -157,7 +157,7 @@ line level    source
  128   1              GPIO_config();
  129   1              UART_config();
  130   1              SPI_config();
- 131   1              P6=IE2;
+ 131   1      
  132   1              EA = 1;
  133   1      
  134   1              delay_ms(200);
@@ -165,54 +165,58 @@ line level    source
  136   1              while(1)
  137   1              {
  138   2      
- 139   2                      SPI_TxRead = 0;
- 140   2                      SPI_TxWrite = 0;
- 141   2                      SPI_RxCnt = 0;
- 142   2                      SPI_WriteToTxBuf(0x1c);
- 143   2                      SPI_WriteToTxBuf((u8)0x00);
- 144   2                      SPI_WriteToTxBuf((u8)0x00);
- 145   2                      // SPI_WriteToTxBuf((u8)0x00);
- 146   2                      // SPI_WriteToTxBuf((u8)0x00);
- 147   2                      SPI_TrigTx();
- 148   2                      delay_ms(250);
- 149   2                      
- 150   2                      // SPI_WriteToTxBuf(0x12);
- 151   2                      // SPI_WriteToTxBuf((u8)0x00);
- 152   2                      // SPI_WriteToTxBuf((u8)0x00);
- 153   2                      // SPI_TrigTx();
- 154   2                      // delay_ms(250);
- 155   2                      ////////////////////////////
- 156   2                      PrintString(USART1,SPI_RxBuffer+i);
- 157   2                      ////////////////////////////////
- 158   2                      // if(SPI_RxTimerOut > 0)
- 159   2                      // {
- 160   2                      //      if(--SPI_RxTimerOut == 0)
- 161   2                      //      {
- 162   2                      //              if(SPI_RxCnt > 1)
- 163   2                      //              {
-C51 COMPILER V9.54   MAIN                                                                  07/09/2021 16:38:48 PAGE 4   
+ 139   2                      // SPI_TxRead = 0;
+ 140   2                      // SPI_TxWrite = 0;
+ 141   2                      // SPI_RxCnt = 0;
+ 142   2                      
+ 143   2                      // SPI_WriteToTxBuf((u8)macpdata>>16);
+ 144   2                      // SPI_WriteToTxBuf((u8)macpdata>>8);
+ 145   2                      // SPI_WriteToTxBuf((u8)(macpdata));
+ 146   2                      // SPI_WriteToTxBuf((u8)0xa0);
+ 147   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 148   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 149   2                      // SPI_TrigTx();
+ 150   2                      // delay_ms(10);
+ 151   2      
+ 152   2                      // SPI_WriteToTxBuf(0x12);
+ 153   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 154   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 155   2                      // SPI_TrigTx();
+ 156   2                      // delay_ms(250);
+ 157   2                      ////////////////////////////
+ 158   2      
+ 159   2                      ////////////////////////////////
+ 160   2                      if(SPI_RxTimerOut > 0)
+ 161   2                      {
+ 162   3                              if(--SPI_RxTimerOut == 0)
+ 163   3                              {
+C51 COMPILER V9.54   MAIN                                                                  07/13/2021 16:39:38 PAGE 4   
 
- 164   2                      //                      i = 0;
- 165   2                      //                      if(SPI_TxRxMode == SPI_Mode_Master)     i++;
- 166   2                      //                      else                                    SPI_RxCnt--;
- 167   2                      //                      for(; i<SPI_RxCnt; i++) PrintString(USART1,SPI_RxBuffer+i);
- 168   2                      //              }
- 169   2                      //              SPI_RxCnt = 0;  //B_SPI_RxOk = 0;
- 170   2                      //      }
- 171   2                      // }
- 172   2                      ////////////////////////////////////
- 173   2      
- 174   2              }
- 175   1      }
- 176          
- 177          
- 178          
- 179          
+ 164   4                                                              PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");      //USART1·¢ËÍÒ»¸ö×Ö·û´®
+ 165   4      
+ 166   4                                      if(SPI_RxCnt > 1)
+ 167   4                                      {
+ 168   5                                              i = 0;
+ 169   5                                              if(SPI_TxRxMode == SPI_Mode_Master)     i++;
+ 170   5                                              else                                    SPI_RxCnt--;
+ 171   5                                              for(; i<SPI_RxCnt; i++) PrintString(USART1,&SPI_RxBuffer[i]);
+ 172   5                                      }
+ 173   4                                      SPI_RxCnt = 0;  //B_SPI_RxOk = 0;
+ 174   4                              }
+ 175   3                      }
+ 176   2                      ////////////////////////////////////
+ 177   2      
+ 178   2              }
+ 179   1      }
+ 180          
+ 181          
+ 182          
+ 183          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    258    ----
-   CONSTANT SIZE    =   ----    ----
+   CODE SIZE        =    282    ----
+   CONSTANT SIZE    =     34    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----      29

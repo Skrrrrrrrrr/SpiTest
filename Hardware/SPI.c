@@ -121,14 +121,22 @@ void SPI_Transivion (void) interrupt SPI_VECTOR
 	{
 		if(SPI_TxRead != SPI_TxWrite)
 		{
+			//////////////////
+			if(SPI_RxCnt >= SPI_BUF_LENTH)		SPI_RxCnt = 0;
+			SPI_RxBuffer[SPI_RxCnt++] = SPDAT;
+			//////////////////
 			SPDAT = SPI_TxBuffer[SPI_TxRead];
 			if(++SPI_TxRead >= SPI_BUF_LENTH)		SPI_TxRead = 0;
+			// PrintString(USART1,"SPI_TxRead != SPI_TxWrite\r");
 		}
 		else
 		{
 			SPI_TxRxMode = SPI_Mode_Slave;
 			SPCTL &= ~(1<<4);	//slave
 			SPI_SS = 1;
+			SPI_RxCnt = 0;
+			SPI_TxWrite = 0;
+			SPI_TxRead = 0;
 		}
 	}
 	SPSTAT = SPIF + WCOL;	//清0 SPIF和WCOL标志

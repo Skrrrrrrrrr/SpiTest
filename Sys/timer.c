@@ -21,7 +21,8 @@
 
 
 #include	"timer.h"
-//#include	"SPI.h"
+#include	"SPI.h"
+#include	"USART.h"
 
 u8 i;
 /********************* Timer0中断函数************************/
@@ -40,13 +41,23 @@ void timer1_int (void) interrupt TIMER1_VECTOR
 /********************* Timer2中断函数************************/
 void timer2_int (void) interrupt TIMER2_VECTOR
 {
-	P32 = ~P32;
+	// P32 = ~P32;
 }
 
 /********************* Timer3中断函数************************/
 void timer3_int (void) interrupt TIMER3_VECTOR
 {
-	P33 = ~P33;
+	// P33 = ~P33;
+	static unsigned int cnt;
+	if(++cnt==51)
+	{
+		cnt=0;
+		P34 = ~P34;
+		SPI_WriteToTxBuf((u8)0xa0);
+		SPI_WriteToTxBuf((u8)0x00);
+		SPI_WriteToTxBuf((u8)0x00);
+		SPI_TrigTx();
+	}
 }
 
 /********************* Timer4中断函数************************/
@@ -57,8 +68,14 @@ void timer4_int (void) interrupt TIMER4_VECTOR
 	{
 		cnt=0;
 		P34 = ~P34;
-	}
 
+		PrintString(USART1,&SPI_RxBuffer[0]);
+		// PrintString(USART1,&SPI_RxBuffer[1]);
+		// PrintString(USART1,&SPI_RxBuffer[2]);
+		PrintString(USART1,"\r");
+		// PrintString(USART1,"Hello World!\r");
+		*SPI_RxBuffer=0;
+	}
 }
 
 

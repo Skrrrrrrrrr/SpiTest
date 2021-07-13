@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   USART                                                                 07/09/2021 16:38:49 PAGE 1   
+C51 COMPILER V9.54   USART                                                                 07/13/2021 16:39:38 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE USART
@@ -62,7 +62,7 @@ line level    source
   52          // 备注: 
   53          //========================================================================
   54          u8 USART_Configuration(u8 UARTx, COMx_InitDefine *COMx)
-C51 COMPILER V9.54   USART                                                                 07/09/2021 16:38:49 PAGE 2   
+C51 COMPILER V9.54   USART                                                                 07/13/2021 16:39:38 PAGE 2   
 
   55          {
   56   1              u32     j;
@@ -126,7 +126,7 @@ line level    source
  114   1      
  115   1              if(UARTx == USART2)
  116   1              {
-C51 COMPILER V9.54   USART                                                                 07/09/2021 16:38:49 PAGE 3   
+C51 COMPILER V9.54   USART                                                                 07/13/2021 16:39:38 PAGE 3   
 
  117   2                      COM2.id = 2;
  118   2                      COM2.RX_Buffer = RX2_Buffer;
@@ -190,7 +190,7 @@ line level    source
  176   4                                      T4T3M &= ~(1<<2);       //定时
  177   4                                      T4T3M &= ~1;            //不输出时钟
  178   4                                      TH3 = (u8)(j >> 8);
-C51 COMPILER V9.54   USART                                                                 07/09/2021 16:38:49 PAGE 4   
+C51 COMPILER V9.54   USART                                                                 07/13/2021 16:39:38 PAGE 4   
 
  179   4                                      TL3 = (u8)j;
  180   4                                      T4T3M |=  (1<<3);       //开始运行
@@ -254,7 +254,7 @@ line level    source
  238   2                      return  0;
  239   2              }
  240   1      
-C51 COMPILER V9.54   USART                                                                 07/09/2021 16:38:49 PAGE 5   
+C51 COMPILER V9.54   USART                                                                 07/13/2021 16:39:38 PAGE 5   
 
  241   1              return  3;      //其它错误
  242   1      }
@@ -318,7 +318,7 @@ line level    source
  300   2                      TI = 0;
  301   2                      COM1.TX_Busy = 0;
  302   2              }
-C51 COMPILER V9.54   USART                                                                 07/09/2021 16:38:49 PAGE 6   
+C51 COMPILER V9.54   USART                                                                 07/13/2021 16:39:38 PAGE 6   
 
  303   1      }
  304          
@@ -382,7 +382,7 @@ line level    source
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   1550    ----
-C51 COMPILER V9.54   USART                                                                 07/09/2021 16:38:49 PAGE 7   
+C51 COMPILER V9.54   USART                                                                 07/13/2021 16:39:38 PAGE 7   
 
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =    512    ----
