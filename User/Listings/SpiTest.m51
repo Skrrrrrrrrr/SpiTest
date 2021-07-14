@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        07/13/2021  16:39:39  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/14/2021  15:42:01  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -59,27 +59,26 @@ LINK MAP OF MODULE:  ..\Obj\SpiTest (MAIN)
             XDATA   0000H     0200H     UNIT         ?XD?USART
 
             * * * * * * *   C O D E   M E M O R Y   * * * * * * *
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 2
 
 
             CODE    0000H     0003H     ABSOLUTE     
-            CODE    0003H     0002H     UNIT         ?CO?TIMER
-            CODE    0005H     0001H     UNIT         ?PR?TIMER0_INT?TIMER
-            CODE    0006H     0001H     UNIT         ?PR?TIMER1_INT?TIMER
-            CODE    0007H     0001H     UNIT         ?PR?TIMER2_INT?TIMER
-                    0008H     0003H                  *** GAP ***
+            CODE    0003H     0001H     UNIT         ?PR?TIMER0_INT?TIMER
+            CODE    0004H     0001H     UNIT         ?PR?TIMER1_INT?TIMER
+            CODE    0005H     0001H     UNIT         ?PR?TIMER2_INT?TIMER
+                    0006H     0005H                  *** GAP ***
             CODE    000BH     0003H     ABSOLUTE     
             CODE    000EH     000DH     UNIT         ?PR?_SPI_SETMODE?SPI
             CODE    001BH     0003H     ABSOLUTE     
                     001EH     0005H                  *** GAP ***
             CODE    0023H     0003H     ABSOLUTE     
-            CODE    0026H     0014H     UNIT         ?PR?_SPI_WRITETOTXBUF?SPI
-                    003AH     0009H                  *** GAP ***
+            CODE    0026H     0019H     UNIT         ?PR?TIMER4_INT?TIMER
+                    003FH     0004H                  *** GAP ***
             CODE    0043H     0003H     ABSOLUTE     
                     0046H     0005H                  *** GAP ***
             CODE    004BH     0003H     ABSOLUTE     
-            CODE    004EH     0010H     UNIT         ?PR?_DELAY_MS?DELAY
-                    005EH     0005H                  *** GAP ***
+            CODE    004EH     0014H     UNIT         ?PR?_SPI_WRITETOTXBUF?SPI
+                    0062H     0001H                  *** GAP ***
             CODE    0063H     0003H     ABSOLUTE     
             CODE    0066H     0023H     UNIT         ?PR?UART_CONFIG?MAIN
                     0089H     0002H                  *** GAP ***
@@ -96,21 +95,21 @@ LINK MAP OF MODULE:  ..\Obj\SpiTest (MAIN)
             CODE    09B5H     01C4H     UNIT         ?PR?_GPIO_INILIZE?GPIO
             CODE    0B79H     0091H     UNIT         ?PR?_SPI_INIT?SPI
             CODE    0C0AH     0076H     UNIT         ?PR?SPI_TRANSIVION?SPI
-            CODE    0C80H     0065H     UNIT         ?PR?TIMER4_INT?TIMER
-            CODE    0CE5H     005EH     UNIT         ?PR?TIMER3_INT?TIMER
-            CODE    0D43H     005AH     UNIT         ?PR?MAIN?MAIN
-            CODE    0D9DH     0053H     UNIT         ?PR?TIMER_CONFIG?MAIN
-            CODE    0DF0H     0052H     UNIT         ?PR?_PRINTSTRING?USART
-            CODE    0E42H     003EH     UNIT         ?PR?UART2_INT?USART
-            CODE    0E80H     003EH     UNIT         ?PR?UART3_INT?USART
-            CODE    0EBEH     003EH     UNIT         ?PR?UART4_INT?USART
-            CODE    0EFCH     0038H     UNIT         ?PR?UART1_INT?USART
-            CODE    0F34H     0037H     UNIT         ?PR?_INITUARTVALUE?USART
-            CODE    0F6BH     0027H     UNIT         ?PR?GPIO_CONFIG?MAIN
-            CODE    0F92H     0023H     UNIT         ?PR?SPI_CONFIG?MAIN
-            CODE    0FB5H     0023H     UNIT         ?PR?SPI_TRIGTX?SPI
-            CODE    0FD8H     0022H     UNIT         ?CO?MAIN
-            CODE    0FFAH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0C80H     006AH     UNIT         ?PR?MAIN?MAIN
+            CODE    0CEAH     005EH     UNIT         ?PR?TIMER3_INT?TIMER
+            CODE    0D48H     0053H     UNIT         ?PR?TIMER_CONFIG?MAIN
+            CODE    0D9BH     0052H     UNIT         ?PR?_PRINTSTRING?USART
+            CODE    0DEDH     0042H     UNIT         ?CO?MAIN
+            CODE    0E2FH     003EH     UNIT         ?PR?UART2_INT?USART
+            CODE    0E6DH     003EH     UNIT         ?PR?UART3_INT?USART
+            CODE    0EABH     003EH     UNIT         ?PR?UART4_INT?USART
+            CODE    0EE9H     0038H     UNIT         ?PR?UART1_INT?USART
+            CODE    0F21H     0037H     UNIT         ?PR?_INITUARTVALUE?USART
+            CODE    0F58H     0027H     UNIT         ?PR?GPIO_CONFIG?MAIN
+            CODE    0F7FH     0023H     UNIT         ?PR?SPI_CONFIG?MAIN
+            CODE    0FA2H     0023H     UNIT         ?PR?SPI_TRIGTX?SPI
+            CODE    0FC5H     0010H     UNIT         ?PR?_DELAY_MS?DELAY
+            CODE    0FD5H     000CH     UNIT         ?C_C51STARTUP
 
 
 
@@ -119,22 +118,16 @@ OVERLAY MAP OF MODULE:   ..\Obj\SpiTest (MAIN)
 
 SEGMENT                                  DATA_GROUP 
   +--> CALLED SEGMENT                  START    LENGTH
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 3
-
-
 ------------------------------------------------------
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 3
+
+
 ?PR?TIMER3_INT?TIMER                   -----    -----
   +--> ?PR?_SPI_WRITETOTXBUF?SPI
   +--> ?PR?SPI_TRIGTX?SPI
 
 ?PR?SPI_TRIGTX?SPI                     -----    -----
   +--> ?PR?_SPI_SETMODE?SPI
-
-*** NEW ROOT ***************************************************
-
-?PR?TIMER4_INT?TIMER                   -----    -----
-  +--> ?PR?_PRINTSTRING?USART
-  +--> ?CO?TIMER
 
 *** NEW ROOT ***************************************************
 
@@ -179,39 +172,39 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 4
-
-
   D:00B0H         PUBLIC        P3
   D:00C0H         PUBLIC        P4
   D:00C8H         PUBLIC        P5
   B:00A8H.7       PUBLIC        EA
   D:00E8H         PUBLIC        P6
   D:00F8H         PUBLIC        P7
-  C:0F6BH         PUBLIC        GPIO_config
+  C:0F58H         PUBLIC        GPIO_config
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 4
+
+
   D:00A8H         PUBLIC        IE
   C:0066H         PUBLIC        UART_config
   D:00B8H         PUBLIC        IP
   D:00D8H         PUBLIC        CCON
-  C:0D43H         PUBLIC        main
+  C:0C80H         PUBLIC        main
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   D:00F0H         PUBLIC        B
-  C:0F92H         PUBLIC        SPI_config
+  C:0F7FH         PUBLIC        SPI_config
   D:00E0H         PUBLIC        ACC
-  C:0D9DH         PUBLIC        Timer_config
+  C:0D48H         PUBLIC        Timer_config
   D:00D0H         PUBLIC        PSW
   -------         PROC          GPIO_CONFIG
   -------         DO            
   D:0009H         SYMBOL        GPIO_InitStructure
   -------         ENDDO         
-  C:0F6BH         LINE#         31
-  C:0F6BH         LINE#         32
-  C:0F6BH         LINE#         34
-  C:0F6EH         LINE#         35
-  C:0F71H         LINE#         36
-  C:0F7CH         LINE#         37
-  C:0F87H         LINE#         38
+  C:0F58H         LINE#         31
+  C:0F58H         LINE#         32
+  C:0F58H         LINE#         34
+  C:0F5BH         LINE#         35
+  C:0F5EH         LINE#         36
+  C:0F69H         LINE#         37
+  C:0F74H         LINE#         38
   -------         ENDPROC       GPIO_CONFIG
   -------         PROC          UART_CONFIG
   -------         DO            
@@ -231,82 +224,84 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   -------         DO            
   D:0009H         SYMBOL        TIM_InitStructure
   -------         ENDDO         
-  C:0D9DH         LINE#         60
-  C:0D9DH         LINE#         61
-  C:0D9DH         LINE#         82
-  C:0DA0H         LINE#         83
-  C:0DA3H         LINE#         84
-  C:0DA5H         LINE#         85
-  C:0DABH         LINE#         86
-  C:0DAEH         LINE#         87
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 5
+  C:0D48H         LINE#         60
+  C:0D48H         LINE#         61
+  C:0D48H         LINE#         82
+  C:0D4BH         LINE#         83
+  C:0D4EH         LINE#         84
+  C:0D50H         LINE#         85
+  C:0D56H         LINE#         86
+  C:0D59H         LINE#         87
+  C:0D63H         LINE#         89
+  C:0D66H         LINE#         90
+  C:0D69H         LINE#         91
+  C:0D6CH         LINE#         92
+  C:0D72H         LINE#         93
+  C:0D75H         LINE#         94
+  C:0D80H         LINE#         96
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 5
 
 
-  C:0DB8H         LINE#         89
-  C:0DBBH         LINE#         90
-  C:0DBEH         LINE#         91
-  C:0DC1H         LINE#         92
-  C:0DC7H         LINE#         93
-  C:0DCAH         LINE#         94
-  C:0DD5H         LINE#         96
-  C:0DD8H         LINE#         97
-  C:0DDBH         LINE#         98
-  C:0DDEH         LINE#         99
-  C:0DE3H         LINE#         100
-  C:0DE6H         LINE#         101
+  C:0D83H         LINE#         97
+  C:0D86H         LINE#         98
+  C:0D89H         LINE#         99
+  C:0D8EH         LINE#         100
+  C:0D91H         LINE#         101
   -------         ENDPROC       TIMER_CONFIG
   -------         PROC          SPI_CONFIG
   -------         DO            
   D:0009H         SYMBOL        SPI_InitStructure
   -------         ENDDO         
-  C:0F92H         LINE#         105
-  C:0F92H         LINE#         106
-  C:0F92H         LINE#         108
-  C:0F95H         LINE#         109
-  C:0F98H         LINE#         110
-  C:0F9AH         LINE#         111
-  C:0F9CH         LINE#         112
-  C:0F9FH         LINE#         113
-  C:0FA1H         LINE#         114
-  C:0FA4H         LINE#         115
-  C:0FA7H         LINE#         116
-  C:0FA9H         LINE#         117
-  C:0FB1H         LINE#         119
-  C:0FB4H         LINE#         120
+  C:0F7FH         LINE#         105
+  C:0F7FH         LINE#         106
+  C:0F7FH         LINE#         108
+  C:0F82H         LINE#         109
+  C:0F85H         LINE#         110
+  C:0F87H         LINE#         111
+  C:0F89H         LINE#         112
+  C:0F8CH         LINE#         113
+  C:0F8EH         LINE#         114
+  C:0F91H         LINE#         115
+  C:0F94H         LINE#         116
+  C:0F96H         LINE#         117
+  C:0F9EH         LINE#         119
+  C:0FA1H         LINE#         120
   -------         ENDPROC       SPI_CONFIG
   -------         PROC          MAIN
   -------         DO            
   D:0008H         SYMBOL        i
   -------         ENDDO         
-  C:0D43H         LINE#         123
-  C:0D43H         LINE#         124
-  C:0D43H         LINE#         127
-  C:0D46H         LINE#         128
-  C:0D49H         LINE#         129
-  C:0D4CH         LINE#         130
-  C:0D4FH         LINE#         132
-  C:0D51H         LINE#         134
-  C:0D56H         LINE#         136
-  C:0D56H         LINE#         137
-  C:0D56H         LINE#         160
-  C:0D5DH         LINE#         161
-  C:0D5DH         LINE#         162
-  C:0D60H         LINE#         163
-  C:0D60H         LINE#         164
-  C:0D6BH         LINE#         166
-  C:0D72H         LINE#         167
-  C:0D72H         LINE#         168
-  C:0D75H         LINE#         169
-  C:0D7EH         LINE#         170
-  C:0D80H         LINE#         171
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 6
+  C:0C80H         LINE#         123
+  C:0C80H         LINE#         124
+  C:0C80H         LINE#         127
+  C:0C83H         LINE#         128
+  C:0C86H         LINE#         129
+  C:0C89H         LINE#         130
+  C:0C8CH         LINE#         132
+  C:0C8EH         LINE#         134
+  C:0C93H         LINE#         136
+  C:0C93H         LINE#         137
+  C:0C93H         LINE#         150
+  C:0C98H         LINE#         151
+  C:0CA3H         LINE#         160
+  C:0CAAH         LINE#         161
+  C:0CAAH         LINE#         162
+  C:0CADH         LINE#         163
+  C:0CADH         LINE#         164
+  C:0CB8H         LINE#         166
+  C:0CBFH         LINE#         167
+  C:0CBFH         LINE#         168
+  C:0CC2H         LINE#         169
+  C:0CCBH         LINE#         170
+  C:0CCDH         LINE#         171
+  C:0CE5H         LINE#         172
+  C:0CE5H         LINE#         173
+  C:0CE8H         LINE#         174
+  C:0CE8H         LINE#         175
+  C:0CE8H         LINE#         178
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 6
 
 
-  C:0D98H         LINE#         172
-  C:0D98H         LINE#         173
-  C:0D9BH         LINE#         174
-  C:0D9BH         LINE#         175
-  C:0D9BH         LINE#         178
   -------         ENDPROC       MAIN
   -------         ENDMOD        MAIN
 
@@ -359,14 +354,14 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   C:0A13H         LINE#         43
   C:0A13H         LINE#         44
   C:0A24H         LINE#         45
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 7
-
-
   C:0A33H         LINE#         46
   C:0A43H         LINE#         47
   C:0A56H         LINE#         48
   C:0A56H         LINE#         49
   C:0A5BH         LINE#         50
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 7
+
+
   C:0A5BH         LINE#         51
   C:0A6CH         LINE#         52
   C:0A7BH         LINE#         53
@@ -411,22 +406,22 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   D:00E8H         PUBLIC        P6
   D:00F8H         PUBLIC        P7
   D:00CEH         PUBLIC        SPCTL
-  C:0026H         PUBLIC        _SPI_WriteToTxBuf
+  C:004EH         PUBLIC        _SPI_WriteToTxBuf
   D:00A8H         PUBLIC        IE
   D:003DH         PUBLIC        SPI_TxRead
   D:00B8H         PUBLIC        IP
   D:00D8H         PUBLIC        CCON
   D:003EH         PUBLIC        SPI_TxWrite
-  C:0FB5H         PUBLIC        SPI_TrigTx
+  C:0FA2H         PUBLIC        SPI_TrigTx
   D:0098H         PUBLIC        SCON
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 8
-
-
   D:0088H         PUBLIC        TCON
   D:003FH         PUBLIC        SPI_RxCnt
   D:00AFH         PUBLIC        IE2
   D:00F0H         PUBLIC        B
   D:00E0H         PUBLIC        ACC
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 8
+
+
   D:0040H         PUBLIC        SPI_RxTimerOut
   D:00CDH         PUBLIC        SPSTAT
   C:0B79H         PUBLIC        _SPI_Init
@@ -471,28 +466,28 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   -------         ENDPROC       _SPI_SETMODE
   -------         PROC          _SPI_WRITETOTXBUF
   D:0007H         SYMBOL        dat
-  C:0026H         LINE#         76
-  C:0026H         LINE#         77
-  C:0026H         LINE#         78
-  C:002DH         LINE#         79
-  C:0039H         LINE#         80
+  C:004EH         LINE#         76
+  C:004EH         LINE#         77
+  C:004EH         LINE#         78
+  C:0055H         LINE#         79
+  C:0061H         LINE#         80
   -------         ENDPROC       _SPI_WRITETOTXBUF
   -------         PROC          SPI_TRIGTX
   -------         DO            
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 9
-
-
   D:0007H         SYMBOL        i
   -------         ENDDO         
-  C:0FB5H         LINE#         89
-  C:0FB5H         LINE#         90
-  C:0FB5H         LINE#         92
-  C:0FBBH         LINE#         93
-  C:0FC0H         LINE#         94
-  C:0FC2H         LINE#         95
-  C:0FC9H         LINE#         96
-  C:0FD5H         LINE#         97
-  C:0FD7H         LINE#         98
+  C:0FA2H         LINE#         89
+  C:0FA2H         LINE#         90
+  C:0FA2H         LINE#         92
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 9
+
+
+  C:0FA8H         LINE#         93
+  C:0FADH         LINE#         94
+  C:0FAFH         LINE#         95
+  C:0FB6H         LINE#         96
+  C:0FC2H         LINE#         97
+  C:0FC4H         LINE#         98
   -------         ENDPROC       SPI_TRIGTX
   -------         PROC          SPI_TRANSIVION
   C:0C0AH         LINE#         108
@@ -537,36 +532,36 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   D:00C8H         PUBLIC        P5
   D:00E8H         PUBLIC        P6
   D:00F8H         PUBLIC        P7
-  C:0DF0H         PUBLIC        _PrintString
+  C:0D9BH         PUBLIC        _PrintString
   D:00A2H         PUBLIC        P_SW1
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 10
-
-
   D:00BAH         PUBLIC        P_SW2
   D:00A8H         PUBLIC        IE
   D:0021H         PUBLIC        COM1
   D:0028H         PUBLIC        COM2
   D:002FH         PUBLIC        COM3
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 10
+
+
   D:0036H         PUBLIC        COM4
   B:00A8H.4       PUBLIC        ES
   D:00B8H         PUBLIC        IP
   X:0000H         PUBLIC        RX1_Buffer
   X:0080H         PUBLIC        RX2_Buffer
   B:0098H.0       PUBLIC        RI
-  C:0EFCH         PUBLIC        UART1_int
+  C:0EE9H         PUBLIC        UART1_int
   X:0100H         PUBLIC        RX3_Buffer
-  C:0E42H         PUBLIC        UART2_int
+  C:0E2FH         PUBLIC        UART2_int
   X:0180H         PUBLIC        RX4_Buffer
   B:0098H.1       PUBLIC        TI
-  C:0E80H         PUBLIC        UART3_int
-  C:0EBEH         PUBLIC        UART4_int
+  C:0E6DH         PUBLIC        UART3_int
+  C:0EABH         PUBLIC        UART4_int
   D:00D8H         PUBLIC        CCON
   D:0099H         PUBLIC        SBUF
   D:0087H         PUBLIC        PCON
   D:0098H         PUBLIC        SCON
   D:0089H         PUBLIC        TMOD
   D:0088H         PUBLIC        TCON
-  C:0F34H         PUBLIC        _InitUartValue
+  C:0F21H         PUBLIC        _InitUartValue
   D:00AFH         PUBLIC        IE2
   D:00F0H         PUBLIC        B
   D:008EH         PUBLIC        AUXR
@@ -597,16 +592,16 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   -------         DO            
   D:0007H         SYMBOL        i
   -------         ENDDO         
-  C:0F34H         LINE#         34
-  C:0F3AH         LINE#         35
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 11
+  C:0F21H         LINE#         34
+  C:0F27H         LINE#         35
+  C:0F27H         LINE#         37
+  C:0F2EH         LINE#         38
+  C:0F35H         LINE#         39
+  C:0F3CH         LINE#         40
+  C:0F57H         LINE#         41
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 11
 
 
-  C:0F3AH         LINE#         37
-  C:0F41H         LINE#         38
-  C:0F48H         LINE#         39
-  C:0F4FH         LINE#         40
-  C:0F6AH         LINE#         41
   -------         ENDPROC       _INITUARTVALUE
   -------         PROC          _USART_CONFIGURATION
   D:0012H         SYMBOL        UARTx
@@ -659,14 +654,14 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   C:01AEH         LINE#         101
   C:01B1H         LINE#         102
   C:01B3H         LINE#         103
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 12
-
-
   C:01B7H         LINE#         104
   C:01B7H         LINE#         105
   C:01BAH         LINE#         106
   C:01BAH         LINE#         107
   C:01CDH         LINE#         108
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 12
+
+
   C:01CFH         LINE#         109
   C:01DCH         LINE#         110
   C:01DEH         LINE#         111
@@ -719,14 +714,14 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   C:0373H         LINE#         162
   C:0376H         LINE#         163
   C:0379H         LINE#         164
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 13
-
-
   C:037CH         LINE#         165
   C:038BH         LINE#         166
   C:038EH         LINE#         167
   C:0391H         LINE#         168
   C:0394H         LINE#         169
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 13
+
+
   C:0396H         LINE#         170
   C:039BH         LINE#         171
   C:039BH         LINE#         172
@@ -779,14 +774,14 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   C:04CFH         LINE#         221
   C:04D2H         LINE#         222
   C:04D5H         LINE#         223
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 14
-
-
   C:04D8H         LINE#         224
   C:04DBH         LINE#         225
   C:04DEH         LINE#         226
   C:04EDH         LINE#         227
   C:04F0H         LINE#         228
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 14
+
+
   C:04F3H         LINE#         229
   C:04F5H         LINE#         230
   C:04F8H         LINE#         231
@@ -804,109 +799,109 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   -------         PROC          _PRINTSTRING
   D:0007H         SYMBOL        UARTx
   D:0001H         SYMBOL        puts
-  C:0DF0H         LINE#         255
-  C:0DF0H         LINE#         256
-  C:0DF0H         LINE#         257
-  C:0DF6H         LINE#         258
-  C:0DF6H         LINE#         259
-  C:0DF9H         LINE#         260
-  C:0DF9H         LINE#         261
-  C:0DFCH         LINE#         262
-  C:0DFEH         LINE#         263
-  C:0E07H         LINE#         265
-  C:0E0AH         LINE#         266
-  C:0E0AH         LINE#         267
-  C:0E0DH         LINE#         268
-  C:0E0FH         LINE#         269
-  C:0E18H         LINE#         271
-  C:0E1BH         LINE#         272
-  C:0E1BH         LINE#         273
-  C:0E1EH         LINE#         274
-  C:0E20H         LINE#         275
-  C:0E29H         LINE#         277
-  C:0E2CH         LINE#         278
-  C:0E2CH         LINE#         279
-  C:0E2FH         LINE#         280
-  C:0E31H         LINE#         281
-  C:0E38H         LINE#         282
-  C:0E38H         LINE#         283
-  C:0E41H         LINE#         284
+  C:0D9BH         LINE#         255
+  C:0D9BH         LINE#         256
+  C:0D9BH         LINE#         257
+  C:0DA1H         LINE#         258
+  C:0DA1H         LINE#         259
+  C:0DA4H         LINE#         260
+  C:0DA4H         LINE#         261
+  C:0DA7H         LINE#         262
+  C:0DA9H         LINE#         263
+  C:0DB2H         LINE#         265
+  C:0DB5H         LINE#         266
+  C:0DB5H         LINE#         267
+  C:0DB8H         LINE#         268
+  C:0DBAH         LINE#         269
+  C:0DC3H         LINE#         271
+  C:0DC6H         LINE#         272
+  C:0DC6H         LINE#         273
+  C:0DC9H         LINE#         274
+  C:0DCBH         LINE#         275
+  C:0DD4H         LINE#         277
+  C:0DD7H         LINE#         278
+  C:0DD7H         LINE#         279
+  C:0DDAH         LINE#         280
+  C:0DDCH         LINE#         281
+  C:0DE3H         LINE#         282
+  C:0DE3H         LINE#         283
+  C:0DECH         LINE#         284
   -------         ENDPROC       _PRINTSTRING
   -------         PROC          UART1_INT
-  C:0EFCH         LINE#         289
-  C:0F04H         LINE#         291
-  C:0F07H         LINE#         292
-  C:0F07H         LINE#         293
-  C:0F09H         LINE#         294
-  C:0F17H         LINE#         295
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 15
+  C:0EE9H         LINE#         289
+  C:0EF1H         LINE#         291
+  C:0EF4H         LINE#         292
+  C:0EF4H         LINE#         293
+  C:0EF6H         LINE#         294
+  C:0F04H         LINE#         295
+  C:0F10H         LINE#         296
+  C:0F10H         LINE#         298
+  C:0F13H         LINE#         299
+  C:0F13H         LINE#         300
+  C:0F15H         LINE#         301
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 15
 
 
-  C:0F23H         LINE#         296
-  C:0F23H         LINE#         298
-  C:0F26H         LINE#         299
-  C:0F26H         LINE#         300
-  C:0F28H         LINE#         301
-  C:0F2BH         LINE#         302
-  C:0F2BH         LINE#         303
+  C:0F18H         LINE#         302
+  C:0F18H         LINE#         303
   -------         ENDPROC       UART1_INT
   -------         PROC          UART2_INT
-  C:0E42H         LINE#         306
-  C:0E4AH         LINE#         308
-  C:0E4FH         LINE#         309
-  C:0E4FH         LINE#         310
-  C:0E52H         LINE#         311
-  C:0E60H         LINE#         312
-  C:0E6CH         LINE#         313
-  C:0E6CH         LINE#         315
-  C:0E71H         LINE#         316
-  C:0E71H         LINE#         317
-  C:0E74H         LINE#         318
-  C:0E77H         LINE#         319
-  C:0E77H         LINE#         321
+  C:0E2FH         LINE#         306
+  C:0E37H         LINE#         308
+  C:0E3CH         LINE#         309
+  C:0E3CH         LINE#         310
+  C:0E3FH         LINE#         311
+  C:0E4DH         LINE#         312
+  C:0E59H         LINE#         313
+  C:0E59H         LINE#         315
+  C:0E5EH         LINE#         316
+  C:0E5EH         LINE#         317
+  C:0E61H         LINE#         318
+  C:0E64H         LINE#         319
+  C:0E64H         LINE#         321
   -------         ENDPROC       UART2_INT
   -------         PROC          UART3_INT
-  C:0E80H         LINE#         324
-  C:0E88H         LINE#         326
-  C:0E8DH         LINE#         327
-  C:0E8DH         LINE#         328
-  C:0E90H         LINE#         329
-  C:0E9EH         LINE#         330
-  C:0EAAH         LINE#         331
-  C:0EAAH         LINE#         333
-  C:0EAFH         LINE#         334
-  C:0EAFH         LINE#         335
-  C:0EB2H         LINE#         336
-  C:0EB5H         LINE#         337
-  C:0EB5H         LINE#         339
+  C:0E6DH         LINE#         324
+  C:0E75H         LINE#         326
+  C:0E7AH         LINE#         327
+  C:0E7AH         LINE#         328
+  C:0E7DH         LINE#         329
+  C:0E8BH         LINE#         330
+  C:0E97H         LINE#         331
+  C:0E97H         LINE#         333
+  C:0E9CH         LINE#         334
+  C:0E9CH         LINE#         335
+  C:0E9FH         LINE#         336
+  C:0EA2H         LINE#         337
+  C:0EA2H         LINE#         339
   -------         ENDPROC       UART3_INT
   -------         PROC          UART4_INT
-  C:0EBEH         LINE#         342
-  C:0EC6H         LINE#         344
-  C:0ECBH         LINE#         345
-  C:0ECBH         LINE#         346
-  C:0ECEH         LINE#         347
-  C:0EDCH         LINE#         348
-  C:0EE8H         LINE#         349
-  C:0EE8H         LINE#         351
-  C:0EEDH         LINE#         352
-  C:0EEDH         LINE#         353
-  C:0EF0H         LINE#         354
-  C:0EF3H         LINE#         355
-  C:0EF3H         LINE#         357
+  C:0EABH         LINE#         342
+  C:0EB3H         LINE#         344
+  C:0EB8H         LINE#         345
+  C:0EB8H         LINE#         346
+  C:0EBBH         LINE#         347
+  C:0EC9H         LINE#         348
+  C:0ED5H         LINE#         349
+  C:0ED5H         LINE#         351
+  C:0EDAH         LINE#         352
+  C:0EDAH         LINE#         353
+  C:0EDDH         LINE#         354
+  C:0EE0H         LINE#         355
+  C:0EE0H         LINE#         357
   -------         ENDPROC       UART4_INT
   -------         ENDMOD        USART
 
   -------         MODULE        MCP3302
   C:0000H         SYMBOL        _ICE_DUMMY_
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 16
-
-
   -------         ENDMOD        MCP3302
 
   -------         MODULE        DELAY
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 16
+
+
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
@@ -921,20 +916,20 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   D:0088H         PUBLIC        TCON
   D:00F0H         PUBLIC        B
   D:00E0H         PUBLIC        ACC
-  C:004EH         PUBLIC        _delay_ms
+  C:0FC5H         PUBLIC        _delay_ms
   D:00D0H         PUBLIC        PSW
   -------         PROC          _DELAY_MS
   D:0007H         SYMBOL        ms
   -------         DO            
   D:0004H         SYMBOL        i
   -------         ENDDO         
-  C:004EH         LINE#         34
-  C:004EH         LINE#         35
-  C:004EH         LINE#         37
-  C:004EH         LINE#         38
-  C:0052H         LINE#         39
-  C:005BH         LINE#         40
-  C:005DH         LINE#         41
+  C:0FC5H         LINE#         34
+  C:0FC5H         LINE#         35
+  C:0FC5H         LINE#         37
+  C:0FC5H         LINE#         38
+  C:0FC9H         LINE#         39
+  C:0FD2H         LINE#         40
+  C:0FD4H         LINE#         41
   -------         ENDPROC       _DELAY_MS
   -------         ENDMOD        DELAY
 
@@ -942,15 +937,15 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
   D:0090H         PUBLIC        P1
-  C:0005H         PUBLIC        timer0_int
+  C:0003H         PUBLIC        timer0_int
   D:00A0H         PUBLIC        P2
-  C:0006H         PUBLIC        timer1_int
+  C:0004H         PUBLIC        timer1_int
   D:00B0H         PUBLIC        P3
-  C:0007H         PUBLIC        timer2_int
+  C:0005H         PUBLIC        timer2_int
   D:00C0H         PUBLIC        P4
-  C:0CE5H         PUBLIC        timer3_int
+  C:0CEAH         PUBLIC        timer3_int
   D:00C8H         PUBLIC        P5
-  C:0C80H         PUBLIC        timer4_int
+  C:0026H         PUBLIC        timer4_int
   D:00E8H         PUBLIC        P6
   D:00F8H         PUBLIC        P7
   D:00A8H         PUBLIC        IE
@@ -959,14 +954,14 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   D:0098H         PUBLIC        SCON
   D:0089H         PUBLIC        TMOD
   D:0088H         PUBLIC        TCON
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 17
-
-
   B:00B0H.4       PUBLIC        P34
   C:0788H         PUBLIC        _Timer_Inilize
   D:00AFH         PUBLIC        IE2
   D:00F0H         PUBLIC        B
   D:008EH         PUBLIC        AUXR
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 17
+
+
   D:00E0H         PUBLIC        ACC
   B:00A8H.1       PUBLIC        ET0
   B:00A8H.3       PUBLIC        ET1
@@ -989,145 +984,142 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   D:008FH         PUBLIC        INT_CLKO
   D:00D0H         PUBLIC        PSW
   -------         PROC          TIMER0_INT
-  C:0005H         LINE#         29
-  C:0005H         LINE#         32
+  C:0003H         LINE#         29
+  C:0003H         LINE#         32
   -------         ENDPROC       TIMER0_INT
   -------         PROC          TIMER1_INT
-  C:0006H         LINE#         35
-  C:0006H         LINE#         39
+  C:0004H         LINE#         35
+  C:0004H         LINE#         39
   -------         ENDPROC       TIMER1_INT
   -------         PROC          TIMER2_INT
-  C:0007H         LINE#         42
-  C:0007H         LINE#         45
+  C:0005H         LINE#         42
+  C:0005H         LINE#         45
   -------         ENDPROC       TIMER2_INT
   -------         PROC          TIMER3_INT
   -------         DO            
   D:0042H         SYMBOL        cnt
   -------         ENDDO         
-  C:0CE5H         LINE#         48
-  C:0D02H         LINE#         52
-  C:0D10H         LINE#         53
-  C:0D10H         LINE#         54
-  C:0D14H         LINE#         55
-  C:0D16H         LINE#         56
-  C:0D1BH         LINE#         57
-  C:0D20H         LINE#         58
-  C:0D25H         LINE#         59
-  C:0D28H         LINE#         60
-  C:0D28H         LINE#         61
+  C:0CEAH         LINE#         48
+  C:0D07H         LINE#         52
+  C:0D15H         LINE#         53
+  C:0D15H         LINE#         54
+  C:0D19H         LINE#         55
+  C:0D1BH         LINE#         56
+  C:0D20H         LINE#         57
+  C:0D25H         LINE#         58
+  C:0D2AH         LINE#         59
+  C:0D2DH         LINE#         60
+  C:0D2DH         LINE#         61
   -------         ENDPROC       TIMER3_INT
   -------         PROC          TIMER4_INT
   -------         DO            
   D:0044H         SYMBOL        cnt
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 18
-
-
   -------         ENDDO         
-  C:0C80H         LINE#         64
-  C:0C9DH         LINE#         67
-  C:0CABH         LINE#         68
-  C:0CABH         LINE#         69
-  C:0CAFH         LINE#         70
-  C:0CB1H         LINE#         72
-  C:0CBBH         LINE#         75
-  C:0CC6H         LINE#         77
-  C:0CCAH         LINE#         78
-  C:0CCAH         LINE#         79
+  C:0026H         LINE#         64
+  C:0028H         LINE#         67
+  C:0036H         LINE#         68
+  C:0036H         LINE#         69
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 18
+
+
+  C:003AH         LINE#         70
+  C:003CH         LINE#         77
+  C:003CH         LINE#         78
   -------         ENDPROC       TIMER4_INT
   -------         PROC          _TIMER_INILIZE
   D:0005H         SYMBOL        TIM
   D:0001H         SYMBOL        TIMx
-  C:0788H         LINE#         89
+  C:0788H         LINE#         88
+  C:078AH         LINE#         89
   C:078AH         LINE#         90
-  C:078AH         LINE#         91
-  C:0793H         LINE#         93
+  C:0793H         LINE#         92
+  C:0796H         LINE#         93
   C:0796H         LINE#         94
-  C:0796H         LINE#         95
-  C:07A2H         LINE#         96
-  C:07A4H         LINE#         97
-  C:07A6H         LINE#         98
-  C:07A8H         LINE#         99
-  C:07ABH         LINE#         100
-  C:07AEH         LINE#         101
-  C:07B1H         LINE#         102
-  C:07BCH         LINE#         103
-  C:07C7H         LINE#         104
-  C:07CAH         LINE#         105
-  C:07D6H         LINE#         106
-  C:07DDH         LINE#         107
-  C:07E9H         LINE#         109
-  C:07F3H         LINE#         110
-  C:07FBH         LINE#         111
-  C:0806H         LINE#         112
-  C:0809H         LINE#         113
-  C:0809H         LINE#         115
+  C:07A2H         LINE#         95
+  C:07A4H         LINE#         96
+  C:07A6H         LINE#         97
+  C:07A8H         LINE#         98
+  C:07ABH         LINE#         99
+  C:07AEH         LINE#         100
+  C:07B1H         LINE#         101
+  C:07BCH         LINE#         102
+  C:07C7H         LINE#         103
+  C:07CAH         LINE#         104
+  C:07D6H         LINE#         105
+  C:07DDH         LINE#         106
+  C:07E9H         LINE#         108
+  C:07F3H         LINE#         109
+  C:07FBH         LINE#         110
+  C:0806H         LINE#         111
+  C:0809H         LINE#         112
+  C:0809H         LINE#         114
+  C:080EH         LINE#         115
   C:080EH         LINE#         116
-  C:080EH         LINE#         117
-  C:081AH         LINE#         118
-  C:081CH         LINE#         119
-  C:081EH         LINE#         120
-  C:0820H         LINE#         121
-  C:0823H         LINE#         122
-  C:0826H         LINE#         123
-  C:0829H         LINE#         124
-  C:0834H         LINE#         125
-  C:083FH         LINE#         126
-  C:0845H         LINE#         127
-  C:0851H         LINE#         128
-  C:0858H         LINE#         129
-  C:0864H         LINE#         131
-  C:086EH         LINE#         132
-  C:0876H         LINE#         133
-  C:0881H         LINE#         134
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 19
-
-
-  C:0884H         LINE#         135
-  C:0884H         LINE#         137
+  C:081AH         LINE#         117
+  C:081CH         LINE#         118
+  C:081EH         LINE#         119
+  C:0820H         LINE#         120
+  C:0823H         LINE#         121
+  C:0826H         LINE#         122
+  C:0829H         LINE#         123
+  C:0834H         LINE#         124
+  C:083FH         LINE#         125
+  C:0845H         LINE#         126
+  C:0851H         LINE#         127
+  C:0858H         LINE#         128
+  C:0864H         LINE#         130
+  C:086EH         LINE#         131
+  C:0876H         LINE#         132
+  C:0881H         LINE#         133
+  C:0884H         LINE#         134
+  C:0884H         LINE#         136
+  C:0889H         LINE#         137
   C:0889H         LINE#         138
-  C:0889H         LINE#         139
-  C:0898H         LINE#         140
-  C:089BH         LINE#         141
-  C:089EH         LINE#         142
-  C:08A1H         LINE#         143
-  C:08ADH         LINE#         144
-  C:08B3H         LINE#         145
-  C:08BFH         LINE#         146
-  C:08CBH         LINE#         148
-  C:08D5H         LINE#         149
-  C:08DDH         LINE#         150
-  C:08E9H         LINE#         151
-  C:08ECH         LINE#         152
-  C:08ECH         LINE#         154
+  C:0898H         LINE#         139
+  C:089BH         LINE#         140
+  C:089EH         LINE#         141
+  C:08A1H         LINE#         142
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 19
+
+
+  C:08ADH         LINE#         143
+  C:08B3H         LINE#         144
+  C:08BFH         LINE#         145
+  C:08CBH         LINE#         147
+  C:08D5H         LINE#         148
+  C:08DDH         LINE#         149
+  C:08E9H         LINE#         150
+  C:08ECH         LINE#         151
+  C:08ECH         LINE#         153
+  C:08F1H         LINE#         154
   C:08F1H         LINE#         155
-  C:08F1H         LINE#         156
-  C:0900H         LINE#         157
-  C:0903H         LINE#         158
-  C:0906H         LINE#         159
-  C:0912H         LINE#         160
-  C:0918H         LINE#         161
-  C:0924H         LINE#         162
-  C:0930H         LINE#         164
-  C:093AH         LINE#         165
-  C:0942H         LINE#         166
-  C:094EH         LINE#         167
-  C:0951H         LINE#         168
-  C:0951H         LINE#         170
+  C:0900H         LINE#         156
+  C:0903H         LINE#         157
+  C:0906H         LINE#         158
+  C:0912H         LINE#         159
+  C:0918H         LINE#         160
+  C:0924H         LINE#         161
+  C:0930H         LINE#         163
+  C:093AH         LINE#         164
+  C:0942H         LINE#         165
+  C:094EH         LINE#         166
+  C:0951H         LINE#         167
+  C:0951H         LINE#         169
+  C:0956H         LINE#         170
   C:0956H         LINE#         171
-  C:0956H         LINE#         172
-  C:0965H         LINE#         173
-  C:0968H         LINE#         174
-  C:096BH         LINE#         175
-  C:0977H         LINE#         176
-  C:097DH         LINE#         177
-  C:0989H         LINE#         178
-  C:0995H         LINE#         180
-  C:09A1H         LINE#         181
-  C:09A3H         LINE#         182
-  C:09AFH         LINE#         183
-  C:09B2H         LINE#         184
-  C:09B2H         LINE#         186
-  C:09B4H         LINE#         187
+  C:0965H         LINE#         172
+  C:0968H         LINE#         173
+  C:096BH         LINE#         174
+  C:0977H         LINE#         175
+  C:097DH         LINE#         176
+  C:0989H         LINE#         177
+  C:0995H         LINE#         179
+  C:09A1H         LINE#         180
+  C:09A3H         LINE#         181
+  C:09AFH         LINE#         182
+  C:09B2H         LINE#         183
+  C:09B2H         LINE#         185
+  C:09B4H         LINE#         186
   -------         ENDPROC       _TIMER_INILIZE
   -------         ENDMOD        TIMER
 
@@ -1139,9 +1131,6 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   C:0552H         PUBLIC        ?C?CLDOPTR
   -------         ENDMOD        ?C?CLDOPTR
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 20
-
-
   -------         MODULE        ?C?CSTOPTR
   C:057FH         PUBLIC        ?C?CSTOPTR
   -------         ENDMOD        ?C?CSTOPTR
@@ -1149,6 +1138,9 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   -------         MODULE        ?C?ILDOPTR
   C:05A1H         PUBLIC        ?C?ILDOPTR
   -------         ENDMOD        ?C?ILDOPTR
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/14/2021  15:42:01  PAGE 20
+
 
   -------         MODULE        ?C?ULDIV
   C:0615H         PUBLIC        ?C?ULDIV
@@ -1199,11 +1191,8 @@ SYMBOL TABLE OF MODULE:  ..\Obj\SpiTest (MAIN)
   -------         ENDMOD        ?C?PLDPDATA
 
   -------         MODULE        ?C?PLDCODE
-BL51 BANKED LINKER/LOCATER V6.22                                                      07/13/2021  16:39:39  PAGE 21
-
-
   C:077CH         PUBLIC        ?C?PLDCODE
   -------         ENDMOD        ?C?PLDCODE
 
-Program Size: data=132.1 xdata=512 code=4058
+Program Size: data=132.1 xdata=512 code=4028
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

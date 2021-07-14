@@ -140,14 +140,11 @@ void main(void)
 		// SPI_TxWrite = 0;
 		// SPI_RxCnt = 0;
 		
-		// SPI_WriteToTxBuf((u8)macpdata>>16);
-		// SPI_WriteToTxBuf((u8)macpdata>>8);
-		// SPI_WriteToTxBuf((u8)(macpdata));
 		// SPI_WriteToTxBuf((u8)0xa0);
 		// SPI_WriteToTxBuf((u8)0x00);
 		// SPI_WriteToTxBuf((u8)0x00);
 		// SPI_TrigTx();
-		// delay_ms(10);
+		// delay_ms(500);
 
 		// SPI_WriteToTxBuf(0x12);
 		// SPI_WriteToTxBuf((u8)0x00);

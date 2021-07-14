@@ -69,12 +69,11 @@ void timer4_int (void) interrupt TIMER4_VECTOR
 		cnt=0;
 		P34 = ~P34;
 
-		PrintString(USART1,&SPI_RxBuffer[0]);
+		// PrintString(USART1,&SPI_RxBuffer[2]);
 		// PrintString(USART1,&SPI_RxBuffer[1]);
 		// PrintString(USART1,&SPI_RxBuffer[2]);
-		PrintString(USART1,"\r");
+		// PrintString(USART1,"\r");
 		// PrintString(USART1,"Hello World!\r");
-		*SPI_RxBuffer=0;
 	}
 }
 
