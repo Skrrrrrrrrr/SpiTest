@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   MAIN                                                                  07/14/2021 15:41:59 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  07/15/2021 16:58:04 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
@@ -62,7 +62,7 @@ line level    source
   49   1              COMx_InitStructure.UART_BaudRate  = 9600ul;                     //波特率, 一般 110 ~ 115200
   50   1              COMx_InitStructure.UART_RxEnable  = ENABLE;                             //接收允许,   ENABLE或DISABLE
   51   1              COMx_InitStructure.UART_Interrupt = ENABLE;                             //中断允许,   ENABLE或DISABLE
-C51 COMPILER V9.54   MAIN                                                                  07/14/2021 15:41:59 PAGE 2   
+C51 COMPILER V9.54   MAIN                                                                  07/15/2021 16:58:04 PAGE 2   
 
   52   1              COMx_InitStructure.UART_P_SW      = UART1_SW_P30_P31;   //切换端口,   UART1_SW_P30_P31,UART1_SW_P36_P37,UAR
              -T1_SW_P16_P17(必须使用内部时钟)
@@ -126,7 +126,7 @@ line level    source
  101   1              Timer_Inilize(Timer4,&TIM_InitStructure);                               //初始化Timer4    Timer0,Timer1,Timer2,Timer3,Timer4
  102   1              
  103   1      }
-C51 COMPILER V9.54   MAIN                                                                  07/14/2021 15:41:59 PAGE 3   
+C51 COMPILER V9.54   MAIN                                                                  07/15/2021 16:58:04 PAGE 3   
 
  104          
  105          void    SPI_config(void)
@@ -152,7 +152,7 @@ line level    source
  123          void main(void)
  124          {
  125   1      
- 126   1              u8 i;
+ 126   1              // u8 i;
  127   1              Timer_config();
  128   1              GPIO_config();
  129   1              UART_config();
@@ -169,57 +169,54 @@ line level    source
  140   2                      // SPI_TxWrite = 0;
  141   2                      // SPI_RxCnt = 0;
  142   2                      
- 143   2                      // SPI_WriteToTxBuf((u8)macpdata>>16);
- 144   2                      // SPI_WriteToTxBuf((u8)macpdata>>8);
- 145   2                      // SPI_WriteToTxBuf((u8)(macpdata));
- 146   2                      // SPI_WriteToTxBuf((u8)0xa0);
- 147   2                      // SPI_WriteToTxBuf((u8)0x00);
- 148   2                      // SPI_WriteToTxBuf((u8)0x00);
- 149   2                      // SPI_TrigTx();
- 150   2                      delay_ms(500);
- 151   2                      PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!");  //USART1发送一个字符串
- 152   2                      // SPI_WriteToTxBuf(0x12);
- 153   2                      // SPI_WriteToTxBuf((u8)0x00);
- 154   2                      // SPI_WriteToTxBuf((u8)0x00);
- 155   2                      // SPI_TrigTx();
- 156   2                      // delay_ms(250);
- 157   2                      ////////////////////////////
- 158   2      
- 159   2                      ////////////////////////////////
- 160   2                      if(SPI_RxTimerOut > 0)
- 161   2                      {
- 162   3                              if(--SPI_RxTimerOut == 0)
- 163   3                              {
-C51 COMPILER V9.54   MAIN                                                                  07/14/2021 15:41:59 PAGE 4   
+ 143   2                      // SPI_WriteToTxBuf((u8)0xa0);
+ 144   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 145   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 146   2                      // SPI_TrigTx();
+ 147   2                      // delay_ms(500);
+ 148   2      
+ 149   2                      // SPI_WriteToTxBuf(0x12);
+ 150   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 151   2                      // SPI_WriteToTxBuf((u8)0x00);
+ 152   2                      // SPI_TrigTx();
+ 153   2                      // delay_ms(250);
+ 154   2                      ////////////////////////////
+ 155   2      
+ 156   2                      ////////////////////////////////
+ 157   2                      // if(SPI_RxTimerOut > 0)
+ 158   2                      // {
+ 159   2                      //      if(--SPI_RxTimerOut == 0)
+ 160   2                      //      {
+ 161   2                      //              // PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");   //USART1发送一个字符串
+ 162   2      
+ 163   2                      //              if(SPI_RxCnt > 1)
+C51 COMPILER V9.54   MAIN                                                                  07/15/2021 16:58:04 PAGE 4   
 
- 164   4                                                              PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");      //USART1发送一个字符串
- 165   4      
- 166   4                                      if(SPI_RxCnt > 1)
- 167   4                                      {
- 168   5                                              i = 0;
- 169   5                                              if(SPI_TxRxMode == SPI_Mode_Master)     i++;
- 170   5                                              else                                    SPI_RxCnt--;
- 171   5                                              for(; i<SPI_RxCnt; i++) PrintString(USART1,&SPI_RxBuffer[i]);
- 172   5                                      }
- 173   4                                      SPI_RxCnt = 0;  //B_SPI_RxOk = 0;
- 174   4                              }
- 175   3                      }
- 176   2                      ////////////////////////////////////
- 177   2      
- 178   2              }
- 179   1      }
+ 164   2                      //              {
+ 165   2                      //                      i = 0;
+ 166   2                      //                      if(SPI_TxRxMode == SPI_Mode_Master)     i++;
+ 167   2                      //                      else                                    SPI_RxCnt--;
+ 168   2                      //                      for(; i<SPI_RxCnt; i++) PrintString(USART1,&SPI_RxBuffer[i]);
+ 169   2                      //              }
+ 170   2                      //              SPI_RxCnt = 0;  //B_SPI_RxOk = 0;
+ 171   2                      //      }
+ 172   2                      // }
+ 173   2                      ////////////////////////////////////
+ 174   2      
+ 175   2              }
+ 176   1      }
+ 177          
+ 178          
+ 179          
  180          
- 181          
- 182          
- 183          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    298    ----
-   CONSTANT SIZE    =     66    ----
+   CODE SIZE        =    213    ----
+   CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----      29
+   DATA SIZE        =   ----      28
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

@@ -53,8 +53,9 @@ void timer3_int (void) interrupt TIMER3_VECTOR
 	{
 		cnt=0;
 		P34 = ~P34;
-		SPI_WriteToTxBuf((u8)0xa0);
+		SPI_WriteToTxBuf((u8)0xf0);
 		SPI_WriteToTxBuf((u8)0x00);
+		SPI_WriteToTxBuf((u8)0x00);		
 		SPI_WriteToTxBuf((u8)0x00);
 		SPI_TrigTx();
 	}
@@ -69,10 +70,16 @@ void timer4_int (void) interrupt TIMER4_VECTOR
 		cnt=0;
 		P34 = ~P34;
 
-		// PrintString(USART1,&SPI_RxBuffer[2]);
+		PrintString(USART1,&SPI_RxBuffer[0]);
 		// PrintString(USART1,&SPI_RxBuffer[1]);
 		// PrintString(USART1,&SPI_RxBuffer[2]);
-		// PrintString(USART1,"\r");
+		// PrintString(USART1,&SPI_RxBuffer[3]);
+		// PrintString(USART1,&SPI_RxBuffer[4]);
+		// PrintString(USART1,&SPI_RxBuffer[5]);
+		// PrintString(USART1,&SPI_RxBuffer[6]);
+		// PrintString(USART1,&SPI_RxBuffer[7]);
+
+		// PrintString(USART1,"\r\n");
 		// PrintString(USART1,"Hello World!\r");
 	}
 }

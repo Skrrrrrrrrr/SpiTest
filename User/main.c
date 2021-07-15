@@ -123,7 +123,7 @@ void	SPI_config(void)
 void main(void)
 {
 
-	u8 i;
+	// u8 i;
 	Timer_config();
 	GPIO_config();
 	UART_config();
@@ -154,22 +154,22 @@ void main(void)
 		////////////////////////////
 
 		////////////////////////////////
-		if(SPI_RxTimerOut > 0)
-		{
-			if(--SPI_RxTimerOut == 0)
-			{
-							PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");	//USART1发送一个字符串
+		// if(SPI_RxTimerOut > 0)
+		// {
+		// 	if(--SPI_RxTimerOut == 0)
+		// 	{
+		// 		// PrintString(USART1,"STC15F2K60S2 SPI Test Prgramme!\r\n");	//USART1发送一个字符串
 
-				if(SPI_RxCnt > 1)
-				{
-					i = 0;
-					if(SPI_TxRxMode == SPI_Mode_Master)	i++;
-					else					SPI_RxCnt--;
-					for(; i<SPI_RxCnt; i++)	PrintString(USART1,&SPI_RxBuffer[i]);
-				}
-				SPI_RxCnt = 0;	//B_SPI_RxOk = 0;
-			}
-		}
+		// 		if(SPI_RxCnt > 1)
+		// 		{
+		// 			i = 0;
+		// 			if(SPI_TxRxMode == SPI_Mode_Master)	i++;
+		// 			else					SPI_RxCnt--;
+		// 			for(; i<SPI_RxCnt; i++)	PrintString(USART1,&SPI_RxBuffer[i]);
+		// 		}
+		// 		SPI_RxCnt = 0;	//B_SPI_RxOk = 0;
+		// 	}
+		// }
 		////////////////////////////////////
 
 	}

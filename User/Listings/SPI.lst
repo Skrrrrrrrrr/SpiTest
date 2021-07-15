@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   SPI                                                                   07/14/2021 15:42:00 PAGE 1   
+C51 COMPILER V9.54   SPI                                                                   07/15/2021 16:58:04 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE SPI
@@ -62,7 +62,7 @@ line level    source
   52   1      }
   53          
   54          //========================================================================
-C51 COMPILER V9.54   SPI                                                                   07/14/2021 15:42:00 PAGE 2   
+C51 COMPILER V9.54   SPI                                                                   07/15/2021 16:58:04 PAGE 2   
 
   55          // 函数: void   SPI_SetMode(u8 mode)
   56          // 描述: SPI设置主从模式函数.
@@ -126,7 +126,7 @@ line level    source
  114   3                              if(SPI_RxCnt >= SPI_BUF_LENTH)          SPI_RxCnt = 0;
  115   3                              SPI_RxBuffer[SPI_RxCnt++] = SPDAT;
  116   3                              SPI_RxTimerOut = 5;
-C51 COMPILER V9.54   SPI                                                                   07/14/2021 15:42:00 PAGE 3   
+C51 COMPILER V9.54   SPI                                                                   07/15/2021 16:58:04 PAGE 3   
 
  117   3                      }
  118   2              }
@@ -141,21 +141,24 @@ line level    source
  127   3                              //////////////////
  128   3                              SPDAT = SPI_TxBuffer[SPI_TxRead];
  129   3                              if(++SPI_TxRead >= SPI_BUF_LENTH)               SPI_TxRead = 0;
- 130   3                              // PrintString(USART1,"SPI_TxRead != SPI_TxWrite\r");
- 131   3                      }
- 132   2                      else
- 133   2                      {
- 134   3                              SPI_TxRxMode = SPI_Mode_Slave;
- 135   3                              SPCTL &= ~(1<<4);       //slave
- 136   3                              SPI_SS = 1;
+ 130   3                      }
+ 131   2                      else
+ 132   2                      {
+ 133   3                              SPI_TxRxMode = SPI_Mode_Slave;
+ 134   3                              SPCTL &= ~(1<<4);       //slave
+ 135   3                              SPI_SS = 1;
+ 136   3                              ///////////////////////////
  137   3                              SPI_RxCnt = 0;
  138   3                              SPI_TxWrite = 0;
  139   3                              SPI_TxRead = 0;
- 140   3                      }
- 141   2              }
- 142   1              SPSTAT = SPIF + WCOL;   //清0 SPIF和WCOL标志
- 143   1      }
- 144          
+ 140   3                              ///////////////////////////
+ 141   3                      }
+ 142   2              }
+ 143   1              // PrintString(USART1,SPI_RxBuffer);
+ 144   1      
+ 145   1              SPSTAT = SPIF + WCOL;   //清0 SPIF和WCOL标志
+ 146   1      }
+ 147          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
